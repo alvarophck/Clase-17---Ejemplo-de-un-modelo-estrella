@@ -1,0 +1,7 @@
+digraph G { rankdir=LR; bgcolor="#0F1115" fontname="Helvetica" fontcolor="#E6E8EB" pad=0.3 nodesep=0.35 ranksep=0.6; node [fontname="Helvetica" fontsize=11 fontcolor="#E6E8EB" color="#2A2F38" style="filled" fillcolor="#181B21" shape=box]; edge [color="#5B9BD5" fontname="Helvetica" fontsize=9 fontcolor="#8B929C"];
+ subgraph cluster_b { label="Bronze"; color="#2A2F38"; fontcolor="#8B929C"; b1[label="crm_cust_info"]; b2[label="crm_prd_info"]; b3[label="crm_sales_details"]; b4[label="erp_cust_az12"]; b5[label="erp_loc_a101"]; b6[label="erp_px_cat_g1v2"]; }
+ subgraph cluster_s { label="Silver"; color="#2A2F38"; fontcolor="#8B929C"; s1[label="crm_cust_info"]; s2[label="crm_prd_info"]; s3[label="crm_sales_details"]; s4[label="erp_cust_az12"]; s5[label="erp_loc_a101"]; s6[label="erp_px_cat_g1v2"]; }
+ subgraph cluster_g { label="Gold"; color="#2A2F38"; fontcolor="#8B929C"; g1[label="dim_customers"]; g2[label="dim_products"]; g3[label="fact_sales"]; }
+ b1->s1; b2->s2; b3->s3; b4->s4; b5->s5; b6->s6;
+ s1->g1; s4->g1; s5->g1; s2->g2; s6->g2; s3->g3; g1->g3; g2->g3;
+}

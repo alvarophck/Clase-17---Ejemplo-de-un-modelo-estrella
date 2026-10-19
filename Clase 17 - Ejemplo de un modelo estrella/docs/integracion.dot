@@ -1,0 +1,10 @@
+digraph G { rankdir=LR; bgcolor="#0F1115" fontname="Helvetica" fontcolor="#E6E8EB" pad=0.3 nodesep=0.35 ranksep=0.6; node [fontname="Helvetica" fontsize=11 fontcolor="#E6E8EB" color="#2A2F38" style="filled" fillcolor="#181B21" shape=box]; edge [color="#5B9BD5" fontname="Helvetica" fontsize=9 fontcolor="#8B929C"];
+ sd [label="crm_sales_details\nsls_prd_key · sls_cust_id"];
+ pr [label="crm_prd_info\nprd_key"]; cu [label="crm_cust_info\ncst_id · cst_key"];
+ cat [label="erp_px_cat_g1v2\nid"]; az [label="erp_cust_az12\ncid"]; loc [label="erp_loc_a101\ncid"];
+ sd -> pr [label="BK-R93R-62 = prd_key sin 6 primeros car."];
+ sd -> cu [label="sls_cust_id = cst_id"];
+ pr -> cat [label="CO-RF... -> CO_RF (5 car., - por _)"];
+ cu -> az [label="AW00011000 = NASAW00011000 sin NAS"];
+ cu -> loc [label="AW00011000 = AW-00011000 sin guion"];
+}

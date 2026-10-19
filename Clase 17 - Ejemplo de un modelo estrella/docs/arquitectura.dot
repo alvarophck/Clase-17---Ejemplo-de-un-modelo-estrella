@@ -1,0 +1,11 @@
+digraph G { rankdir=LR; bgcolor="#0F1115" fontname="Helvetica" fontcolor="#E6E8EB" pad=0.3 nodesep=0.35 ranksep=0.6; node [fontname="Helvetica" fontsize=11 fontcolor="#E6E8EB" color="#2A2F38" style="filled" fillcolor="#181B21" shape=box]; edge [color="#5B9BD5" fontname="Helvetica" fontsize=9 fontcolor="#8B929C"];
+ subgraph cluster_src { label="Fuentes"; color="#2A2F38"; fontcolor="#8B929C"; crm [label="CRM\ncust_info, prd_info,\nsales_details (CSV)"]; erp [label="ERP\nCUST_AZ12, LOC_A101,\nPX_CAT_G1V2 (CSV)"]; }
+ subgraph cluster_dwh { label="DataWarehouse (SQL Server)"; color="#2A2F38"; fontcolor="#8B929C";
+  bronze [label="Bronze\ntablas · datos en bruto\nbronze.load_bronze\n(truncate + BULK INSERT)"];
+  silver [label="Silver\ntablas · limpieza y estandarización\nsilver.load_silver\n(truncate + INSERT)"];
+  gold [label="Gold\nvistas · modelo en estrella\ndim_customers, dim_products,\nfact_sales, report_customers"]; }
+ consumo [label="Consumo\nconsultas SQL, BI,\nanalistas"];
+ agent [label="SQL Server Agent\nDWH - Carga diaria (06:00)" shape=note fillcolor="#1d2430"];
+ crm -> bronze; erp -> bronze; bronze -> silver; silver -> gold; gold -> consumo;
+ agent -> bronze [style=dashed label="paso 1"]; agent -> silver [style=dashed label="paso 2"];
+}
